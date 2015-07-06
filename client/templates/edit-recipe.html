@@ -1,0 +1,10 @@
+---
+name: editRecipe
+url: /recipe/:id/edit
+controller: EditRecipeController as editRecipe
+---
+<add-edit-recipe 
+  recipe="editRecipe.recipe" 
+  submit-recipe="editRecipe.updateRecipe" 
+  submit-label="Update Recipe" 
+  delete-recipe="editRecipe.deleteRecipe()"></add-edit-recipe>

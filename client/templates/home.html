@@ -1,0 +1,16 @@
+---
+name: home
+url: /
+controller: HomeController as home
+---
+<div>
+  <img src="assets/img/meals.jpg" class="banner" alt="">
+</div>
+<section class="main-container">
+  <h1 class="sr-only">Recipes</h1>
+  <article 
+  	ng-repeat="recipe in home.recipes track by recipe.id"
+  	recipe-detail 
+  	recipe="recipe" 
+  	show-full-details="false"></article>
+</section>

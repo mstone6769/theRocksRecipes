@@ -1,0 +1,32 @@
+<header>
+  <h1>
+    <a ng-if="!showFullDetails" ui-sref="recipe({ id: recipe.id })">{{recipe.name}}</a>
+    <span ng-if="showFullDetails">{{recipe.name}}</span>
+  </h1>
+</header>
+<div class="grid-block">
+  <div class="grid-content" ng-class="{'small-12':showFullDetails}">
+    <p>{{recipe.description}}</p>
+  </div>
+  <div ng-if="showFullDetails" class="grid-content small-12">
+    <h2>Ingredients</h2>
+    <ul class="recipe_ingredients no-bullet grid-block">
+      <li class="grid-content small-12 medium-6" ng-repeat="ingredient in recipe.ingredients">
+        <input type="checkbox" id="ingredient_{{$index}}">
+        <label for="ingredient_{{$index}}">
+          <span class="ingredient_quantity">{{ingredient.quantity}}</span>
+          <span class="ingredient_measurement">{{ingredient.measurement}}</span>
+          <span class="ingredient_name">{{ingredient.name}}</span>
+        </label>
+      </li>
+    </ul>
+  </div>
+</div>
+<div ng-if="showFullDetails" class="recipe_directions">
+  <h2>Directions</h2>
+  <ol>
+    <li ng-repeat="direction in recipe.directions">
+      {{direction.instruction}}
+    </li>
+  </ol>
+</div>

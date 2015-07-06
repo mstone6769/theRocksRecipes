@@ -1,0 +1,11 @@
+---
+name: recipe
+url: /recipe/:id
+controller: RecipeController as recipe
+---
+<article 
+	class="main-container" 
+	recipe-detail 
+	recipe="recipe.details" 
+	show-full-details="true"></article>
+<a class="button secondary" ui-sref="editRecipe({ id: recipe.details.id })">Edit Recipe</a>

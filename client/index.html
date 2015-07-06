@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en" ng-app="application">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Chef Rock's Recipes</title>
+    <link href="/assets/css/app.css" rel="stylesheet" type="text/css">
+    <script src="/assets/js/foundation.js"></script>
+    <script src="/assets/js/routes.js"></script>
+    <script src="/assets/js/app.js"></script>
+  </head>
+  <body>
+    <div class="grid-frame vertical">
+      <div class="grid-content shrink" style="padding: 0;">
+        <div class="menu-group primary">
+          <div class="menu-group-left">
+            <ul class="primary condense menu-bar">
+              <li><a ui-sref="home"><strong>Chef Rock's Recipes</strong></a></li>
+            </ul>
+          </div>
+          <div class="menu-group-right">
+            <ul class="primary condense menu-bar">
+              <li><a ui-sref="addRecipe">Add New Recipe</a></li>
+            </ul>
+          </div>
+        </div>
+        
+      </div>
+      <div class="grid-content">
+        <zf-notification-set id="main-notifications" position="top-right"></zf-notification-set>
+        <div ng-class="['ui-animation']" ui-view></div>
+      </div>
+    </div>
+  </body>
+</html>

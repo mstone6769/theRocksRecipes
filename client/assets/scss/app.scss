@@ -1,0 +1,83 @@
+@import "settings";
+@import "foundation";
+
+
+// For Screen Only Text
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  border: 0;  
+}
+
+ol.no-bullet {
+	list-style-type: none;
+	margin-left: 0;
+}
+
+label {
+	> .sr-only {
+		& + {
+			[type="text"], input[type="password"], input[type="date"], input[type="datetime"], input[type="datetime-local"], input[type="month"], input[type="week"], input[type="email"], input[type="number"], input[type="search"], input[type="tel"], input[type="time"], input[type="url"], input[type="color"], textarea {
+				margin-top: 0;
+			}
+		}
+	}
+}
+
+a.alert > .iconic * {
+  fill: $alert-color;
+  stroke: $alert-color;
+}
+
+.ingredients, .directions {
+	@extend .no-bullet;
+	list-style-type: none;
+	margin-bottom: 0;
+	& + .button {
+		margin-bottom: 0;
+	}
+}
+
+.large-fieldset {
+	border: none;
+	padding: 0;
+	margin: 0 0 1rem 0;
+	> legend {
+		border-top: 1px solid #ccc;
+		padding-top: 1rem;
+		padding-bottom: 1rem;
+		display: block;
+		width: 100%;
+	}
+}
+
+.main-container {
+	padding-top: 1rem;
+	transition: padding-right 500ms ease;
+}
+
+.preview-open {
+	padding-right: $panel-size-horizontal;
+}
+
+.show-preview-pane, .submit-recipe {
+	margin-top: 1rem;
+}
+
+.delete {
+	margin-right: 0;
+}
+
+.recipe-preview {
+	padding-left: 1rem;
+	padding-right: 1rem;
+}
+
+.banner {
+	width: 100%;
+}

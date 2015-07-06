@@ -1,0 +1,76 @@
+<div class="main-container" 
+  ng-class="{'preview-open':recipeForm.previewOpen}">
+  <form ng-submit="recipeForm.submitRecipe(recipeForm.recipe)">
+    <zf-accordion>
+      <zf-accordion-item title="Basics">
+        <label>
+          Recipe Name
+          <input type="text" ng-model="recipeForm.recipe.name" ng-required="true">
+        </label>
+        <label>
+          Description
+          <textarea ng-model="recipeForm.recipe.description" ng-required="true"></textarea>
+        </label>
+      </zf-accordion-item>
+      <zf-accordion-item title="Ingredients">
+        <fieldset class="large-fieldset">
+          <legend class="sr-only">Ingredients</legend>
+          <ul class="ingredients">
+            <li ng-repeat="ingredient in recipeForm.recipe.ingredients" class="grid-block">
+              <label class="grid-content medium-3">
+                <span class="sr-only">Quantity</span>
+                <input type="number" ng-model="ingredient.quantity" placeholder="Quantity" min="0" step="0.125" ng-required="true">
+              </label>
+              <label class="grid-content medium-3">
+                <span class="sr-only">Measurement</span>
+                <input type="text" ng-model="ingredient.measurement" placeholder="Measurement">
+              </label>
+              <label class="grid-content">
+                <span class="sr-only">Ingredient Name</span>
+                <input type="text" ng-model="ingredient.name" placeholder="Ingredient" ng-required="true">
+              </label>
+              <div class="grid-content shrink" ng-show="recipeForm.recipe.ingredients.length>1">
+                <a href="" ng-click="recipeForm.removeItem(recipeForm.recipe.ingredients, $index)" role="button" aria-label="Remove Ingredient">
+                  <img zf-iconic="" icon="circle-x" size="medium">
+                </a>
+              </div>
+            </li>
+          </ul>
+          <button ng-click="recipeForm.addItem(recipeForm.recipe.ingredients)" type="button" class="button small secondary">Add Ingredient</button>
+        </fieldset>
+      </zf-accordion-item>
+      <zf-accordion-item title="Directions">
+        <fieldset class="large-fieldset">
+          <legend class="sr-only">Directions</legend>
+          <ol class="directions">
+            <li ng-repeat="step in recipeForm.recipe.directions">
+              <label for="step_{{$index}}">Step {{$index+1}}</label>
+              <div class="grid-block">
+                <div class="grid-content"><textarea id="step_{{$index}}" ng-model="step.instruction" ng-required="true"></textarea></div>
+                <div class="grid-content shrink" ng-show="recipeForm.recipe.directions.length>1">
+                  <a href="" ng-click="recipeForm.removeItem(recipeForm.recipe.directions, $index)" role="button" aria-label="Remove Step">
+                    <img zf-iconic="" icon="circle-x" size="medium">
+                  </a>
+                </div>
+              </div>
+            </li>
+          </ol>
+          <button ng-click="recipeForm.addItem(recipeForm.recipe.directions)" type="button" class="button small secondary">Add Step</button>
+        </fieldset>
+      </zf-accordion-item>
+    </zf-accordion>
+    <div class="grid-block submit-recipe">
+      <div class="grid-content">
+        <button class="button primary" type="submit">{{recipeForm.submitLabel}}</button>
+        <button class="button secondary" zf-toggle="recipePanel">{{(recipeForm.previewOpen)?'Hide':'Show'}} Preview</button>
+      </div>
+      <div class="grid-content text-right" ng-if="!recipeForm.createMode">
+        <button class="button secondary delete" type="button" ng-click="recipeForm.deleteRecipe()">Delete Recipe</button>
+      </div>
+    </div>
+  </form>
+</div>
+<div zf-panel="" id="recipePanel" position="right" class="panel-fixed">
+  <a zf-close="" class="close-button">×</a>
+   <article class="recipe-preview" recipe-detail recipe="recipeForm.recipe" show-full-details="true"></article> 
+</div>
